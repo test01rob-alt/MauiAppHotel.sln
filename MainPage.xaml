@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.MainPage"
+             BackgroundColor="#1E3A5F"
+             Title="Reserva Hotel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Image Source="dotnet_bot.png" HeightRequest="120" HorizontalOptions="Center" />
+
+            <Label Text="Dados da Reserva" FontSize="24" FontAttributes="Bold" TextColor="White" />
+
+            <Entry Placeholder="Nome do Hóspede" TextColor="White" PlaceholderColor="#B0C4DE" />
+
+            <Label Text="Adultos:" TextColor="White" />
+            <Stepper x:Name="stp_adultos" Minimum="1" Maximum="10" Increment="1" />
+            <Label Text="{Binding Source={x:Reference stp_adultos}, Path=Value}" TextColor="White" />
+
+            <Label Text="Crianças:" TextColor="White" />
+            <Stepper x:Name="stp_criancas" Minimum="0" Maximum="10" Increment="1" />
+            <Label Text="{Binding Source={x:Reference stp_criancas}, Path=Value}" TextColor="White" />
+
+            <Label Text="Check-in:" TextColor="White" />
+            <DatePicker Format="dd/MM/yyyy" TextColor="White" />
+
+            <Label Text="Check-out:" TextColor="White" />
+            <DatePicker Format="dd/MM/yyyy" TextColor="White" />
+
+            <Label Text="Tipo de Quarto:" TextColor="White" />
+            <Picker Title="Selecione o quarto" TextColor="White" TitleColor="#B0C4DE">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Econômico</x:String>
+                        <x:String>Luxo</x:String>
+                        <x:String>Presidencial</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Ver Sobre o Desenvolvedor" 
+                    Clicked="OnSobreClicked" 
+                    BackgroundColor="White" 
+                    TextColor="Black" 
+                    FontAttributes="Bold"
+                    Margin="0,20,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
