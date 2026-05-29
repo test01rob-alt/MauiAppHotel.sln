@@ -9,7 +9,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        // Inicialização padrão segura
+        // Inicialização padrão e limpa usando o Shell do projeto
         MainPage = new AppShell();
     }
 }

@@ -2,48 +2,106 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppHotel.MainPage"
-             BackgroundColor="#1E3A5F"
-             Title="Reserva Hotel">
+             BackgroundColor="#0F0F14"
+             Title="Grand Hotel Luxury">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
-            <Image Source="dotnet_bot.png" HeightRequest="120" HorizontalOptions="Center" />
+        <VerticalStackLayout Padding="25" Spacing="18">
 
-            <Label Text="Dados da Reserva" FontSize="24" FontAttributes="Bold" TextColor="White" />
+            <!-- Identidade Visual Premium: Substituição do robô pelo ícone de Hotel -->
+            <VerticalStackLayout HorizontalOptions="Center" Margin="0,10,0,15">
+                <Label Text="🏨" FontSize="55" HorizontalOptions="Center"/>
+                <Label Text="GRAND HOTEL" FontSize="26" FontAttributes="Bold" TextColor="#D4AF37" HorizontalOptions="Center" CharacterSpacing="2"/>
+                <Label Text="Premium Residence" FontSize="11" TextColor="#A6A6A6" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
 
-            <Entry Placeholder="Nome do Hóspede" TextColor="White" PlaceholderColor="#B0C4DE" />
+            <Label Text="Dados da Reserva" FontSize="18" FontAttributes="Bold" TextColor="White" />
 
-            <Label Text="Adultos:" TextColor="White" />
-            <Stepper x:Name="stp_adultos" Minimum="1" Maximum="10" Increment="1" />
-            <Label Text="{Binding Source={x:Reference stp_adultos}, Path=Value}" TextColor="White" />
+            <!-- Input Nome do Hóspede -->
+            <Border Stroke="#D4AF37" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="5" BackgroundColor="#1A1A22">
+                <Entry x:Name="txt_hospede" Placeholder="Nome completo do hóspede" TextColor="White" PlaceholderColor="#666666" />
+            </Border>
 
-            <Label Text="Crianças:" TextColor="White" />
-            <Stepper x:Name="stp_criancas" Minimum="0" Maximum="10" Increment="1" />
-            <Label Text="{Binding Source={x:Reference stp_criancas}, Path=Value}" TextColor="White" />
+            <!-- Seletores de Hóspedes lado a lado -->
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                    <Label Text="Adultos:" TextColor="#D4AF37" FontAttributes="Bold" FontSize="14" />
+                    <Stepper x:Name="stp_adultos" Minimum="1" Maximum="10" Increment="1" BackgroundColor="#1A1A22"/>
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                        <Label Text="{Binding Source={x:Reference stp_adultos}, Path=Value}" TextColor="White" FontAttributes="Bold"/>
+                        <Label Text="Adulto(s)" TextColor="White" FontSize="13"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
 
-            <Label Text="Check-in:" TextColor="White" />
-            <DatePicker Format="dd/MM/yyyy" TextColor="White" />
+                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                    <Label Text="Crianças:" TextColor="#D4AF37" FontAttributes="Bold" FontSize="14" />
+                    <Stepper x:Name="stp_criancas" Minimum="0" Maximum="10" Increment="1" BackgroundColor="#1A1A22"/>
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                        <Label Text="{Binding Source={x:Reference stp_criancas}, Path=Value}" TextColor="White" FontAttributes="Bold"/>
+                        <Label Text="Criança(s)" TextColor="White" FontSize="13"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
 
-            <Label Text="Check-out:" TextColor="White" />
-            <DatePicker Format="dd/MM/yyyy" TextColor="White" />
+            <!-- Calendários de Check-in e Check-out -->
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                    <Label Text="Check-in:" TextColor="White" FontAttributes="Bold" FontSize="14"/>
+                    <DatePicker x:Name="dtp_checkin" Format="dd/MM/yyyy" TextColor="White" BackgroundColor="#1A1A22"/>
+                </VerticalStackLayout>
 
-            <Label Text="Tipo de Quarto:" TextColor="White" />
-            <Picker Title="Selecione o quarto" TextColor="White" TitleColor="#B0C4DE">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Econômico</x:String>
-                        <x:String>Luxo</x:String>
-                        <x:String>Presidencial</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                    <Label Text="Check-out:" TextColor="White" FontAttributes="Bold" FontSize="14"/>
+                    <DatePicker x:Name="dtp_checkout" Format="dd/MM/yyyy" TextColor="White" BackgroundColor="#1A1A22"/>
+                </VerticalStackLayout>
+            </Grid>
 
+            <!-- Picker do Tipo de Quarto -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Acomodação:" TextColor="White" FontAttributes="Bold" FontSize="14"/>
+                <Border Stroke="#333344" StrokeShape="RoundRectangle 8" BackgroundColor="#1A1A22" Padding="2">
+                    <Picker x:Name="pck_quarto" Title="Selecione o tipo de quarto" TextColor="White" TitleColor="#666666">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Econômico</x:String>
+                                <x:String>Luxo</x:String>
+                                <x:String>Presidencial</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- NOVO RECURSO: Opcional de Café da Manhã -->
+            <Border Stroke="#333344" StrokeShape="RoundRectangle 8" BackgroundColor="#1A1A22" Padding="12" Margin="0,5,0,5">
+                <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                    <VerticalStackLayout>
+                        <Label Text="Café da Manhã Premium" TextColor="White" FontAttributes="Bold" FontSize="14"/>
+                        <Label Text="Adicionar R$ 45,00 diários por pessoa" TextColor="#A6A6A6" FontSize="11"/>
+                    </VerticalStackLayout>
+                    <Switch x:Name="sw_cafe" OnColor="#D4AF37" ThumbColor="White"/>
+                </FlexLayout>
+            </Border>
+
+            <!-- Ação de Cálculo (Dispara o Pop-up Detalhado) -->
+            <Button Text="Calcular Total da Reserva" 
+                    Clicked="OnCalcularClicked"
+                    BackgroundColor="#D4AF37" 
+                    TextColor="#0F0F14" 
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    CornerRadius="8"
+                    Margin="0,10,0,0"/>
+
+            <!-- Botão de Navegação do Desenvolvedor -->
             <Button Text="Ver Sobre o Desenvolvedor" 
                     Clicked="OnSobreClicked" 
-                    BackgroundColor="White" 
-                    TextColor="Black" 
-                    FontAttributes="Bold"
-                    Margin="0,20,0,0"/>
+                    BackgroundColor="Transparent" 
+                    TextColor="#A6A6A6" 
+                    TextTransform="None"
+                    FontSize="13"
+                    Margin="0,5,0,0"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

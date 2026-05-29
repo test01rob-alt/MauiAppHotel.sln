@@ -3,20 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppHotel.SobrePage"
              Title="Sobre o Desenvolvedor"
-             BackgroundColor="#1E3A5F">
+             BackgroundColor="#0F0F14">
 
-    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
-        <Label Text="DADOS DO DESENVOLVEDOR" FontSize="22" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+    <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center" HorizontalOptions="Center">
 
-        <BoxView HeightRequest="2" BackgroundColor="Black" />
+        <!-- Avatar Premium -->
+        <Border Stroke="#D4AF37" StrokeThickness="2" StrokeShape="RoundRectangle 60" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center">
+            <Label Text="👨‍💻" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Border>
 
-        <Label Text="Nome: Robson" FontSize="18" TextColor="White" />
-        <Label Text="Ano: 2026" FontSize="18" TextColor="White" />
-        <Label Text="Instituição: ETEC Centro Paula Souza" FontSize="18" TextColor="White" />
-        <Label Text="Projeto: App Hotel - Agenda 13" FontSize="18" TextColor="White" />
+        <Label Text="DADOS DO DESENVOLVEDOR" FontSize="20" FontAttributes="Bold" TextColor="#D4AF37" HorizontalOptions="Center" CharacterSpacing="1" />
 
-        <BoxView HeightRequest="2" BackgroundColor="Black" />
+        <!-- Card de Informações Integrado ao Tema Black & Gold -->
+        <Border Stroke="#333344" StrokeShape="RoundRectangle 12" BackgroundColor="#1A1A22" Padding="20" WidthRequest="320">
+            <VerticalStackLayout Spacing="14">
 
-        <Label Text="Desenvolvido em .NET MAUI" FontSize="14" TextColor="#B0C4DE" HorizontalOptions="Center" />
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Nome:" FontAttributes="Bold" TextColor="#A6A6A6" WidthRequest="90"/>
+                    <Label Text="Robson" TextColor="White" FontAttributes="Bold" FontSize="16"/>
+                </HorizontalStackLayout>
+
+                <BoxView HeightRequest="1" BackgroundColor="#333344" />
+
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Ano:" FontAttributes="Bold" TextColor="#A6A6A6" WidthRequest="90"/>
+                    <Label Text="2026" TextColor="White" FontSize="16"/>
+                </HorizontalStackLayout>
+
+                <BoxView HeightRequest="1" BackgroundColor="#333344" />
+
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Instituição:" FontAttributes="Bold" TextColor="#A6A6A6" WidthRequest="90"/>
+                    <Label Text="ETEC Centro Paula Souza" TextColor="White" FontSize="14" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <BoxView HeightRequest="1" BackgroundColor="#333344" />
+
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Projeto:" FontAttributes="Bold" TextColor="#A6A6A6" WidthRequest="90"/>
+                    <Label Text="App Hotel - Agenda 13" TextColor="White" FontSize="14" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
+
+        <Label Text="Desenvolvido em .NET MAUI" FontSize="13" TextColor="#666666" HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
